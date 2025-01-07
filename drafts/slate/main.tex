@@ -41,7 +41,7 @@
 }
 
 %document properties
-\title{Draft of trapeze like congestion}
+\title{Draft of Trapeze like congestion}
 
 \author{Martin Briand$^{a,}$\footnote{Martin Briand is the corresponding author. His corresponding email is \href{mailto:martin.briand23@gmail.com}{martin.briand23@gmail.com}}, Nicolas Coulombel$^{b}$, Guillaume Monchambert$^{c}$\\
 \small $^{a}$Martin’s affiliation\\
@@ -61,7 +61,7 @@
 
 \keywords{No keywords for the moment…}
 
-\section{First idea of a problem setting}
+\section{First idea research}
 
 \subsection{Essence of the idea}
 
@@ -70,5 +70,64 @@ The idea is to share the capacity of a highway bottleneck between Trapeze like r
 When making the decision to be a Trapeze driver, commuters are compensated (potentially negatively), and passengers pay a fee (potentially negative).
 
 \subsection{Formal setting}
+
+\begin{itemize}
+    \item We have a road with a bottleneck of capacity $s$. This capacity is considered as fixed in short-term and middle-term calculations.
+    \item This road is shared between capacity $\varphi s$ for Trapeze lanes with dedicated (vertical) queue and capacity $(1-\varphi) s$ for general purpose lanes. $\varphi$ is considered fixed in short-term calculations.
+    \item We have a fixed population of $N$ commuters. All identical with the same $\alpha$ (value of travel time), $\beta$ (value of early delay), $\gamma$ (value of late delay) and $t^*$ (desired arrival time).
+    \item Without loss of generality, the free flow travel time can be considered as null (assumption to check afterward, but seems realistic in our setting). So the travel time can be reduced the queue encountered at the bottleneck when departing at time $t$. More precisely, this queue is denoted by $q_c(t)$ when using the carpool lane, and $q_g(t)$ when using the general purpose lane.
+    \item We note $N_s$, $N_d$ and $N_p$ the respective amounts of solo-driver on general purpose lanes, Trapeze drivers on the Trapeze lanes, and carpool passengers on the Trapeze lanes. We have
+    \begin{equation}
+        N = N_s + N_d + N_p
+    \end{equation}
+    \item We denote the departing rates of each mode by $r_s(t)$, $r_d(t)$ and $r_p(t)$ for solo-drivers, Trapeze drivers and carpool passengers respectively. We therefore have the following set of equalities:
+    \begin{equation}
+        N_i = \int_{time} r_i(t)dt \quad \forall i \in \{s, d, p\}
+    \end{equation}
+    \item We suppose passengers and drivers are continuously matched. Therefore, the number of passengers in a vehicle is time-dependent. That is to say that a driver departing at time $t$ will have $m(t)=\frac{r_p(t)}{r_d(t)}$ passengers in her car.
+    \item There is an inconvenience cost of carpooling per other person in the car which is denoted $\Delta$ (which could be negative). We suppose that the total inconvenience cost is proportional to the number of other persons in the car, namely $m\Delta$.
+    \item Also, drivers (Trapeze or not) incur a cost $f$ for making the trip (fuel, wear and tears of the car, insurance…)
+    \item Finally, each Trapeze drivers proposing her seats receives a time-dependent compensation $\rho_d(t)$ (potentially negative), and each passenger participating in a carpool pays a time-dependent fee $\rho_p(t)$ (potentially negative).
+    \item The road is not tolled.
+\end{itemize}
+
+All these settings being laid. One can easily anticipate the respective costs incurred by commuters of the different modes:
+\begin{eqnarray}
+    c_s(t) = \alpha q_g(t) + \max [\beta (t^* - t - q_g(t)), \gamma (t + q_g(t) - t^*)] + f\\
+    c_d(t) = \alpha q_c(t) + \max [\beta (t^* - t - q_c(t)), \gamma (t + q_c(t) - t^*)] + f + m(t)\Delta - \rho _d(t)\\
+    c_p(t) = \alpha q_c(t) + \max [\beta (t^* - t - q_c(t)), \gamma (t + q_c(t) - t^*)] + m(t)\Delta + \rho _p(t)
+\end{eqnarray}
+where $s$, $d$ and $p$ indices indicate the different modes as before.
+
+A classical definition of a Welfare function that is going to be used during the research readily follows:
+
+\begin{equation}
+    W = -\int_{time} c_s(t)r_s(t)dt
+    - \int_{time} c_d(t)r_d(t)dt
+    - \int_{time} c_p(t)r_p(t)dt
+    + \Pi
+\end{equation}
+where the three first integrals are the costs incurred by commuters, and
+\begin{equation}
+    \Pi = \int_{time} \rho_p(t)r_p(t) - \rho_d(t)r_d(t)dt
+\end{equation}
+is the profit of the Trapeze system as a whole.
+
+\subsection{Research questions:}
+
+With this settings, we could ask the following research questions:
+
+\begin{itemize}
+    \item What happens when the Trapeze projects aims to maximize social welfare?
+    \begin{itemize}
+        \item Short-term (only $\rho_p(t)$ and $\rho_d(t)$ are adjusted)?
+        \item Middle-term ($\varphi$ is also adjusted)?
+        \item Long-term ($s$ is also adjusted)?
+        \item What is the profit of Trapeze?
+    \end{itemize}
+    \item What if we add the constraint that profit should not be negative?
+    \item What if the goal is to maximize profit?
+    \item What if $\rho_p(t)$ and $\rho_d(t)$ are forced to be constant?
+\end{itemize}
 
 \end{document}
