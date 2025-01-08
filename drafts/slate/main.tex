@@ -130,4 +130,45 @@ With this settings, we could ask the following research questions:
     \item What if $\rho_p(t)$ and $\rho_d(t)$ are forced to be constant?
 \end{itemize}
 
+\section{Solving}
+
+In an extremely classical way, taking $N_s$ as a given, one can derive the solutions on the general purpose lane for solo-drivers:
+
+%TODO derive $\tilde{t}$
+
+\begin{equation}
+    \left\{
+    \begin{array}{lr}
+        \dot{q}_g(t) = \frac{\beta}{\alpha - \beta} & \text{if } t+q_g(t) \leq t^*\\
+        \dot{q}_g(t) = \frac{\gamma}{\alpha + \gamma} & \text{if } t+q_g(t) \geq t^*  
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    \left\{
+    \begin{array}{lr}
+        r_g (t) = r_s(t) =s + \frac{\beta s}{\alpha - \beta} & \text{if } t+q_g(t) \leq t^*\\
+        r_g (t) = r_s(t) =s + \frac{\gamma s}{\alpha + \gamma} & \text{if } t+q_g(t) \geq t^* 
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    \left\{
+    \begin{array}{l}
+        t_s^0 = t^* - \frac{\gamma}{\beta + \gamma} \cdot \frac{N_s}{(1-\varphi)s}\\
+        \tilde{t}_s = t^* - \frac{\beta \gamma}{\alpha(\beta + \gamma)}\cdot \frac{N_s}{(1-\varphi)s}\\
+        t_s^1 = t^* + \frac{\beta}{\beta + \gamma} \cdot \frac{N_s}{(1-\varphi)}
+    \end{array}
+    \right.
+\end{equation}
+
+And of course, a general cost incurred by all solo-drivers:
+
+\begin{equation}
+    c_s(t) = c_s = \delta \frac{N_s}{(1-\varphi)s} + f
+\end{equation}
+with $\delta = \frac{\beta \gamma}{\beta + \gamma}$.
+
 \end{document}
