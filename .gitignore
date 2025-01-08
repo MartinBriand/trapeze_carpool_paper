@@ -1,4 +1,4 @@
-ltex*
+# Latex
 main.aux
 main.fdb_latexmk
 main.fls
@@ -6,3 +6,7 @@ main.log
 main.out
 main.pdf
 main.synctex.gz
+
+#Vs code
+trapeze_carpool_paper.code-workspace
+ltex*
