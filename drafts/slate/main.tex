@@ -33,6 +33,9 @@
 % Custom commands
 \usepackage{import}
 
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+
 \newcommand{\keywords}[1]
 {
     \small
@@ -85,7 +88,7 @@ When making the decision to be a Trapeze driver, commuters are compensated (pote
         N_i = \int_{time} r_i(t)dt \quad \forall i \in \{s, d, p\}
     \end{equation}
     \item We suppose passengers and drivers are continuously matched. Therefore, the number of passengers in a vehicle is time-dependent. That is to say that a driver departing at time $t$ will have $m(t)=\frac{r_p(t)}{r_d(t)}$ passengers in her car.
-    \item There is an inconvenience cost of carpooling per other person in the car which is denoted $\Delta$ (which could be negative). We suppose that the total inconvenience cost is proportional to the number of other persons in the car, namely $m\Delta$.
+    \item There is an inconvenience cost of carpooling which is denoted $\Delta$ (which could be negative). We suppose that the total inconvenience cost is the probability of effectively carpooling times the inconvenience cost, namely $\min (m(t), 1) \times \Delta$ for drivers and $\Delta$ for passengers.
     \item Also, drivers (Trapeze or not) incur a cost $f$ for making the trip (fuel, wear and tears of the car, insurance…)
     \item Finally, each Trapeze drivers proposing her seats receives a time-dependent compensation $\rho_d(t)$ (potentially negative), and each passenger participating in a carpool pays a time-dependent fee $\rho_p(t)$ (potentially negative).
     \item The road is not tolled.
@@ -94,8 +97,8 @@ When making the decision to be a Trapeze driver, commuters are compensated (pote
 All these settings being laid. One can easily anticipate the respective costs incurred by commuters of the different modes:
 \begin{eqnarray}
     c_s(t) = \alpha q_g(t) + \max [\beta (t^* - t - q_g(t)), \gamma (t + q_g(t) - t^*)] + f\\
-    c_d(t) = \alpha q_c(t) + \max [\beta (t^* - t - q_c(t)), \gamma (t + q_c(t) - t^*)] + f + m(t)\Delta - \rho _d(t)\\
-    c_p(t) = \alpha q_c(t) + \max [\beta (t^* - t - q_c(t)), \gamma (t + q_c(t) - t^*)] + m(t)\Delta + \rho _p(t)
+    c_d(t) = \alpha q_c(t) + \max [\beta (t^* - t - q_c(t)), \gamma (t + q_c(t) - t^*)] + f + \min(m(t), 1)\times \Delta - \rho _d(t)\\
+    c_p(t) = \alpha q_c(t) + \max [\beta (t^* - t - q_c(t)), \gamma (t + q_c(t) - t^*)] + \Delta + \rho _p(t)
 \end{eqnarray}
 where $s$, $d$ and $p$ indices indicate the different modes as before.
 
@@ -127,20 +130,22 @@ With this settings, we could ask the following research questions:
     \end{itemize}
     \item What if we add the constraint that profit should not be negative?
     \item What if the goal is to maximize profit?
+    \item What if the goal is to minimize emissions or vehicle·km (or maximize vehicle occupancy)?
     \item What if $\rho_p(t)$ and $\rho_d(t)$ are forced to be constant?
 \end{itemize}
 
 \section{Solving}
 
+\subsection{Solo-drivers}
+
 In an extremely classical way, taking $N_s$ as a given, one can derive the solutions on the general purpose lane for solo-drivers:
 
-%TODO derive $\tilde{t}$
 
 \begin{equation}
     \left\{
     \begin{array}{lr}
         \dot{q}_g(t) = \frac{\beta}{\alpha - \beta} & \text{if } t+q_g(t) \leq t^*\\
-        \dot{q}_g(t) = \frac{\gamma}{\alpha + \gamma} & \text{if } t+q_g(t) \geq t^*  
+        \dot{q}_g(t) = -\frac{\gamma}{\alpha + \gamma} & \text{if } t+q_g(t) \geq t^*  
     \end{array}
     \right.
 \end{equation}
@@ -149,7 +154,7 @@ In an extremely classical way, taking $N_s$ as a given, one can derive the solut
     \left\{
     \begin{array}{lr}
         r_g (t) = r_s(t) =s + \frac{\beta s}{\alpha - \beta} & \text{if } t+q_g(t) \leq t^*\\
-        r_g (t) = r_s(t) =s + \frac{\gamma s}{\alpha + \gamma} & \text{if } t+q_g(t) \geq t^* 
+        r_g (t) = r_s(t) =s - \frac{\gamma s}{\alpha + \gamma} & \text{if } t+q_g(t) \geq t^* 
     \end{array}
     \right.
 \end{equation}
@@ -170,5 +175,69 @@ And of course, a general cost incurred by all solo-drivers:
     c_s(t) = c_s = \delta \frac{N_s}{(1-\varphi)s} + f
 \end{equation}
 with $\delta = \frac{\beta \gamma}{\beta + \gamma}$.
+
+\subsection{Other modes with $\rho _{d}(t) = \rho _{p}(t) = 0$}
+
+\subsubsection{Passengers}
+
+The block that follows is completely wrong, because $q_c$ is for sure not related to $r_c$ the same way as $q_g$ to $r_g$.
+
+However, when resolving this fake news a property that comes in the next subsection appeared to my eyes.
+
+BEGIN FAKE NEWS
+
+We get the very same results as for solo-drivers, simply replacing $f$ with $\Delta$, $q_g$ by $q_c$, $r_g$ by $r_c$, and $r_s$ by $r_p$.
+
+\begin{equation}
+    \left\{
+    \begin{array}{lr}
+        \dot{q}_c(t) = \frac{\beta}{\alpha - \beta} & \text{if } t+q_c(t) \leq t^*\\
+        \dot{q}_c(t) = -\frac{\gamma}{\alpha + \gamma} & \text{if } t+q_c(t) \geq t^*  
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    \left\{
+    \begin{array}{lr}
+        r_c (t) = r_p(t) =s + \frac{\beta s}{\alpha - \beta} & \text{if } t + q_c(t) \leq t^*\\
+        r_c (t) = r_p(t) =s - \frac{\gamma s}{\alpha + \gamma} & \text{if } t + q_c(t) \geq t^* 
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    \left\{
+    \begin{array}{l}
+        t_p^0 = t^* - \frac{\gamma}{\beta + \gamma} \cdot \frac{N_p}{(1-\varphi)s}\\
+        \tilde{t}_p = t^* - \frac{\beta \gamma}{\alpha(\beta + \gamma)}\cdot \frac{N_p}{(1-\varphi)s}\\
+        t_p^1 = t^* + \frac{\beta}{\beta + \gamma} \cdot \frac{N_s}{(1-\varphi)}
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    c_s(t) = c_s = \delta \frac{N_s}{(1-\varphi)s} + \Delta
+\end{equation}
+
+END FAKE NEWS
+
+\subsubsection{A property}
+
+\begin{prop}
+    To have an equilibrium, we necessarily need the equality:
+
+    \begin{equation}
+        \rho_p(t) + \rho_d(t) \geq f + \Delta \times \min (0, m(t)-1).
+    \end{equation}
+
+    If the left-hand side is bigger than the right-hand side, then, a Trapeze-drivers departing at time $t$ will have a zero probability of finding a passenger.
+
+    If the left-hand side is smaller, then, there will be no driver for passengers departing at time $t$, which is impossible.
+\end{prop}
+
+\begin{proof}
+    % TODO: write
+\end{proof}
 
 \end{document}
