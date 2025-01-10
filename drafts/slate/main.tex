@@ -228,16 +228,34 @@ END FAKE NEWS
     To have an equilibrium, we necessarily need the equality:
 
     \begin{equation}
-        \rho_p(t) + \rho_d(t) \geq f + \Delta \times \min (0, m(t)-1).
+        \rho_p(t) + \rho_d(t) \geq f + \Delta \times \min (0, m(t)-1)
     \end{equation}
 
-    If the left-hand side is bigger than the right-hand side, then, a Trapeze-drivers departing at time $t$ will have a zero probability of finding a passenger.
+    If the left-hand side is strictly larger than the right-hand side, then, a Trapeze-drivers departing at time $t$ will have a zero probability of finding a passenger.
 
     If the left-hand side is smaller, then, there will be no driver for passengers departing at time $t$, which is impossible.
 \end{prop}
 
 \begin{proof}
-    % TODO: write
+    At a given time $t$, there are three possibilities \emph{a priori}:
+    \begin{enumerate}
+        \item The cost of driving on the reserved lane is strictly lower than that of being a passenger. That is to say that $\rho_p(t) + \rho_d(t) > f + \Delta \times \min (0, m(t)-1)$. A marginal passenger departing at time $t$ would then prefer to offer the ride as a carpooling driver, leading to a decrease of $m(t)$ which would make the inequality even stronger until $m(t) = 0$.
+        \item The cost of driving on the reserved lane is strictly larger than that of being a passenger. That is to say that $\rho_p(t) + \rho_d(t) < f + \Delta \times \min (0, m(t)-1)$. Just as before, a marginal carpooling driver departing at time $t$ would then prefer to switch to passenger, further increasing $m(t)$ and reinforcing the inequality until there is no driver anymore. Which is impossible.
+        \item We have the equality and then an equilibrium can be hoped to be found…
+    \end{enumerate}
 \end{proof}
+
+It seems that this could lead to high instability of the equilibria… Let’s explore that in a toy model with only carpooling drivers and passengers, $m(t)$ being either fixed, simply caped, or totally free.
+
+\subsection{Toy model}
+\subsubsection{Fixed $0 \leq m(t) = m$}
+Let’s try something
+
+
+\subsubsection{Free $0 \leq m(t)$}
+Let’s try something else
+
+\subsubsection{Caped $0 \leq m(t) \leq M$}
+And again sometheng else.
 
 \end{document}
