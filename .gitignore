@@ -7,6 +7,9 @@ main.out
 main.pdf
 main.synctex.gz
 
-#Vs code
+# VS code
 trapeze_carpool_paper.code-workspace
 ltex*
+
+# Python results
+/drafts/notebooks/results/
