@@ -284,72 +284,52 @@ The conditions for having an equilibrium are:
 \begin{itemize}
     \item If everybody drives solo ($N_s = N$, $N_d = 0$ and $N_p = 0$):
         \begin{equation}
-        \left\{
-        \begin{array}{l}
+            \label{eq_equilibrium_cond_start}
             c_s(N) \leq c_d (0)
-        \end{array}
-        \right.
         \end{equation}
     
     \item If everybody drives on the \acrshort{rl} ($N_s = 0$, $N_d = N$ and $N_p = 0$):
         \begin{equation}
-        \left\{
-        \begin{array}{l}
-            c_s(0) \geq c_d (N)\\
-            c_d(N) \leq c_p(N, \Delta _p^{\text{min}})
-        \end{array}
-        \right.
+            c_s(0) \geq c_d (N) \leq c_p(N, \Delta _p^{\text{min}})
         \end{equation}
 
     \item If everybody carpools and the car capacity is reached ($N_s = 0$, $N_d = N\times \frac{1}{M+1}$ and $N_p = N\times \frac{M}{M+1}$):
         \begin{equation}
-        \left\{
-        \begin{array}{l}
-            c_s(0) \geq c_d (N\times \frac{1}{M+1})\\
-            c_d(N\times \frac{1}{M+1}) \leq c_p(N\times \frac{1}{M+1}, \Delta _p^{\text{full}})
-        \end{array}
-        \right.
+            c_s(0) \geq c_d (N\times \frac{1}{M+1}) \geq c_p(N\times \frac{1}{M+1}, \Delta _p^{\text{full}})
         \end{equation}
 
         
     \item If everybody carpools and the car capacity is not reached ($N_s = 0$, $N_d = N_d$ and $N_p = N - N_d$):
         \begin{equation}
-        \left\{
-        \begin{array}{l}
-            c_s(0) \geq c_d (N_d)\\
-            c_d(N_d) = c_p\left(N_d, F^{-1} \left( \frac{N - N_d}{N} \right)\right)
-        \end{array}
-        \right.
+            c_s(0) \geq c_d (N_d) = c_p\left(N_d, F^{-1} \left( \frac{N - N_d}{N} \right)\right)
         \end{equation}
 
     \item If some people drive solo and some share their seats, but without passengers ($N_s = N_s$, $N_d = N - N_s$ and $N_p = 0$):
         \begin{equation}
-        \left\{
-        \begin{array}{l}
-            c_s(N_s) = c_d (N - N_s)\\
-            c_d(N - N_s) \leq c_p(N - N_s, \Delta _p^{\text{min}})
-        \end{array}
-        \right.
+            c_s(N_s) = c_d (N - N_s) \leq c_p(N - N_s, \Delta _p^{\text{min}})
         \end{equation}
 
     \item If some people drive, some other carpool, and the car capacity is reached ($N_s = N_s$, $N_d = (N-N_s)\times \frac{1}{M+1}$, and $N_p = (N-N_s)\times \frac{M}{M+1}$):
         \begin{equation}
-        \left\{
-        \begin{array}{l}
-            c_s(N_s) =  c_d \left( \frac{N-N_s}{M+1} \right)\\
-            c_d \left( \frac{N-N_s}{M+1} \right) \geq c_p \left( \frac{N-N_s}{M+1}, F^{-1} \left( \frac{N-N_s}{N}\times \frac{M}{M+1} \right) \right)
-        \end{array}
-        \right.
+            c_s(N_s) =  c_d \left( \frac{N-N_s}{M+1} \right) \geq c_p \left( \frac{N-N_s}{M+1}, F^{-1} \left( \frac{N-N_s}{N}\times \frac{M}{M+1} \right) \right)
         \end{equation}
+
     \item If some people drive, some other carpool, and the car capacity is not reached ($N_s = N_s$, $N_d = N_d$, and $N_p = N - N_s - N_d$):
         \begin{equation}
-        \left\{
-        \begin{array}{l}
+            \label{eq_equilibrium_cond_finish}
             c_s(N_s) = c_d ( N_d ) = c_p\left(N - N_s - N_p, F^{-1}\left( \frac{N - N_s - N_p}{N} \right) \right)
-        \end{array}
-        \right.
         \end{equation}
 \end{itemize}
+
+Equations \ref{eq_equilibrium_cond_start} --- \ref{eq_equilibrium_cond_finish} might seem complicated to analyze. The nice property below help however in making further manipulation handy.
+
+\begin{prop}
+    \begin{itemize}
+        \item For any given values of $\rho _p$ and $\rho _d$, there exists a unique feasible modal split that is an equilibrium;
+        \item For any given feasible modal split, there exists a (non-necessary unique) fare policy $(\rho _p, \rho _d)$ such that the given modal split is the unique feasible modal split that is an equilibrium resulting with that fare policy.
+    \end{itemize}
+\end{prop}
+
 
 
 \end{document}
