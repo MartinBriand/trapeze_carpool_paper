@@ -137,7 +137,7 @@ Every driver, either $s$ or $d$, also experience a cost $f$ for operating their 
 the drivers of the reserved lanes are insensitive to the expected probability of having passengers. This hypothesis, which could be seen as rather strong (if there is no passenger, drivers would not be deterred from offering their seats, for they know that chances are low they actually do), is actually the result of focusing the complexity of the model on passengers. These are indeed expected to be the scarce resource of the system, and hence the most determining travelers for the system equilibria. \comment{Also, some intuitions which will be developed later in this section will contribute to further justify this hypothesis.}{Don’t forget to do it} % TODO
 This common cost is denoted $\Delta _d$.
 
-Similarly, carpooling passengers experience an inconvenience cost $\Delta _p$. However, opposite to carpooling driver inconvenience cost, this cost is distributed in the population according to the cumulative distribution function $F$. For example, there are $N \times F(\Delta _p ^0)$ commuters whose $\Delta _p$ value is lower than $\Delta _p ^0$. We also suppose that the values of $\Delta _p$ are bounded and that these bounds are reached. That is to say that there is at least one commuter whose passenger inconvenience cost is $\Delta _p ^{\text{min}}$ and $\Delta _p^{\text{min}} \leq \Delta _p$ for all other commuters. Similarly, there is at least one commuter whose passenger inconvenience cost is $\Delta _p ^{\text{max}}$ and $\Delta _p^{\text{max}} \geq \Delta _p$ for all other commuters. We also suppose that F is continuous, differentiable and strictly increasing. Said otherwise, the inverse of F is well-defined and continuous on $[0, 1]$ and the density function is also well-defined, is the derivative of $F$. The density function is denoted $F'$.
+Similarly, carpooling passengers experience an inconvenience cost $\Delta _p$. However, opposite to carpooling driver inconvenience cost, this cost is distributed in the population according to the cumulative distribution function $F$. For example, there are $N \times F(\Delta _p ^0)$ commuters whose $\Delta _p$ value is lower than $\Delta _p ^0$. We also suppose that the values of $\Delta _p$ are bounded and that these bounds are reached. That is to say that there is at least one commuter whose passenger inconvenience cost is $\Delta _p ^{\text{min}}$ and $\Delta _p^{\text{min}} \leq \Delta _p$ for all other commuters. Similarly, there is at least one commuter whose passenger inconvenience cost is $\Delta _p ^{\text{max}}$ and $\Delta _p^{\text{max}} \geq \Delta _p$ for all other commuters. We also suppose that F is continuous, differentiable and strictly increasing. Said otherwise, the invert of F is well-defined and continuous on $[0, 1]$ and the density function is also well-defined, is the derivative of $F$. The density function is denoted $F'$.
 
 Finally, carpooling drivers and passengers both have to pay a fare (potentially negative) for choosing their mode. This fare can be time-dependent. A carpooler choosing mode $i \in \left\{ p, d \right\}$ and departing at time $t$ would then experience a fare $\rho _i (t)$.
 
@@ -321,7 +321,7 @@ The conditions for having an equilibrium are:
         \end{equation}
 \end{itemize}
 
-Equations \ref{eq_equilibrium_cond_start} --- \ref{eq_equilibrium_cond_finish} might seem complicated to analyze. The nice property below help however in making further manipulation handy.
+Equations \ref{eq_equilibrium_cond_start} --- \ref{eq_equilibrium_cond_finish} might seem complicated to analyze. The nice property below will however help in making further manipulations handy.
 
 \begin{prop}
     \begin{itemize}
@@ -330,6 +330,80 @@ Equations \ref{eq_equilibrium_cond_start} --- \ref{eq_equilibrium_cond_finish} m
     \end{itemize}
 \end{prop}
 
+\begin{proof}
+    The proof is structured as follows: for the first part of the property, we will first prove the uniqueness of the resulting feasible equilibrium (assuming existence) and then prove the existence; then will come the proof of the second part of the property.
 
+    \item \paragraph{Proof that there is a unique feasible split for any fare policy}
+    \item \subparagraph{Uniqueness}
+    We first notice that, if $(N_s, N_d, N_p)$ is an equilibrium, then given $N_d$, $N_p$ is uniquely defined and can be written as $N_p = N_p(N_d) = \min (M\times N_d, N \times F(f + \Delta _d + \rho _d - \rho _p))$\footnotemark. Since this function is increasing and continuous, the function $N_d \longrightarrow N_d + N_p(N_d)$ is continuous and strictly increasing. Therefore, if $N_s = 0$, there is at most one feasible modal split that is an equilibrium.
+    
+    Similarly, if $0 < N_s < N$, then $N_d$ is also uniquely defined and can be written as $N_d = N_d (N_s) = \frac{\varphi}{1-\varphi}N_s - (\Delta _d - \rho _d)\frac{\varphi s}{\delta}$. Since these two functions are increasing and continuous, the function $N_s \longrightarrow N_s + N_d(N_s) + N_p(N_d(N_s))$ is strictly increasing and continuous. Therefore, there is at most one feasible modal split that is an equilibrium with $0 < N_s < N$.
+
+    And of course, if $N_s = N$, there is at most one feasible modal split that is an equilibrium.
+    
+    \footnotetext{Here, $F$ is actually continued beyond $\Delta _p^{\text{min}}$ and $\Delta _p^{\text{max}}$ by setting $F(\Delta _p < \Delta _p^{\text{min}}) = 0$ and $F(\Delta _p > \Delta _p^{\text{max}}) = 1$} 
+
+    To finish the proof of uniqueness, assume there exist two feasible modal splits that are equilibrium. We denote them $(N_s^0, N_d^0, N_p^0)$ and $(N_s^1, N_d^1, N_p^1)$. Due to the facts above, we are reduced to proving the assumption is absurd in each of the three following cases (or their symmetric):
+    \begin{itemize}
+        \item $N_s^0 = 0$ (1) and $N_s^1= N$ (2). Then, (1) implies $\frac{\delta N_d^0}{\varphi s} + \Delta _d + \rho _d \leq 0$, and (2) implies $\Delta _d + \rho _d \geq \frac{\delta N}{(1-\varphi)s}$. These two implications together imply that $\frac{\delta N_d^0}{\varphi s} + \frac{\delta N}{(1-\varphi)s} \leq 0$ which is impossible.
+
+        \item $N_s^0 = 0$ (1) and $0 < N_s^1 < N$ (2). Then, (1) implies $\frac{\delta N_d^0}{\varphi s} + \Delta _d + \rho _d \leq 0$, and (2) implies $\frac{\delta N_d^1}{\varphi s} + \Delta _d + \rho _d = \frac{N_s^1}{(1-\varphi)s}$. These two together imply that $N_d^1 > N_d^0$, which in turn imply that $N_d^1 + N_p^1 > N_d^0 + N_p^0 = N$ which is impossible.
+        \item $0 < N_s^0 < N$ (1) and $N_s^1 = N$ (2). Then, (1) implies $\frac{\delta N_d^0}{\varphi s} + \Delta _d + \rho _d = \frac{N_s^0}{(1-\varphi)s}$, and (2) implies $\Delta _d + \rho _d \geq \frac{\delta N}{(1-\varphi)s}$. These two together imply that $\frac{\delta N_s^0}{(1-\varphi)s} - \frac{\delta N_d^0}{\varphi s} \geq \frac{\delta N}{(1-\varphi)s}$ which is impossible.
+    \end{itemize}
+
+    We are now certain that if there is a feasible modal split that is solution, then this modal split is necessarily unique. It remains to prove that such an equilibrium actually exists.
+
+    \item \subparagraph{Existence}
+    
+    To prove the existence, we define $c_{\text{min}} = \min (c_s(0), c_d(0)) = \min (f, f + \Delta _d + \rho _d)$. Noticing that $c_s$ and $c_d$ are injective on $[c_s(0), +\infty[$ and $[c_d(0), +\infty[$ respectively, we also define the following two functions:
+    
+    \begin{equation}
+        N_s(c):= c\in [c_{\text{min}}, +\infty[ \longrightarrow \left\{
+        \begin{array}{lr}
+            0 & \text{if } c \in [c_{\text{min}}, c_s(0)[\\
+            c_s^{-1}(c) & \text{if } c \geq c_s(0)
+        \end{array}
+        \right.
+    \end{equation}
+
+    \begin{equation}
+        N_d(c):= c\in [c_{\text{min}}, +\infty[ \longrightarrow \left\{
+        \begin{array}{lr}
+            0 & \text{if } c \in [c_{\text{min}}, c_d(0)[\\
+            c_d^{-1}(c) & \text{if } c \geq c_d(0)
+        \end{array}
+        \right.
+    \end{equation}
+
+    And then, we define this other function:
+
+    \begin{equation}
+        c_p^{N_s, N_d}:= (N_s, N_d) \in \mathbb{R} _{+}^2 \longrightarrow \left[ N_p \in [0, M\times N_d] \longrightarrow c_p\left( N_d, F^{-1}\left(\frac{N_p}{N_s + N_d + N_p} \right) \right) \right]
+    \end{equation}
+
+    We can see that for all $(N_s, N_d) \in \mathbb{R} _{+}^2$, $c_p^{N_s, N_d}$ is continuous strictly increasing in $N_p$, and therefore invertible. Using this fact, we construct two last intermediate functions:
+
+    \begin{equation}
+        N_p(c):= c\in [c_{\text{min}}, +\infty[ \longrightarrow
+        \left\{
+        \begin{array}{lr}
+            0 & \text{if } c < c_p^{N_s, N_d} (N_s(c), N_d(c))(0)\\
+            M\times N_d(c) & \text{if } c > c_p^{N_s, N_d} (N_s(c), N_d(c))(M\times N_d(c))\\
+            c_p^{N_s, N_d} (N_s(c), N_d(c)) ^{-1} (c) & \text{else}
+        \end{array}
+        \right.
+    \end{equation}
+
+    \begin{equation}
+        N(c):= c\in [c_{\text{min}}, +\infty[ \longrightarrow N_s(c) + N_d(c) + N_p(c)
+    \end{equation}
+
+    Finally, we note that $N_s(c)$, $N_d(c)$ and $N_p(c)$ are three continuous functions, $N(c)$ is also continuous. Since $N(c_{\text{min}}) = 0$ and $\lim_{c\rightarrow +\infty} N(c) = +\infty$, there is at least one $c\in [c_{\text{min}}, +\infty[$ such that $N(c) = N$. By construct, the triplet $(N_s, N_d, N_p)$ thereby obtained is a feasible modal split satisfying one of the equilibrium conditions, which finishes the proof of the first part of the property.
+
+
+    \item \paragraph{Proof that a feasible set always has a fare policy from which it could result as the unique equilibrium}
+    
+
+\end{proof}
 
 \end{document}
