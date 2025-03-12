@@ -45,6 +45,9 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
 \newcommand{\keywords}[1]
 {
     \small
@@ -186,7 +189,17 @@ We have $N_d = N_p = 0$ and $N_s = N$. Writing $\delta = \frac{\beta \gamma}{\be
 
 We have $N_s = 0$ and everybody carpools.
 
-For some given $\rho_d$ and $\rho_p$, suppose there is an equilibrium with $N_d \geq 0$ drivers and $N_p \geq 0$ passengers. Since the cost function experienced by drivers is independent of the passengers, they spread across time according to the classic bottleneck model:
+\begin{definition}[Feasible modal split]
+    A modal split $(N_d, N_p)$ is said to be feasible if $0 \leq N_p \leq M \times N_d$ and $N_p + N_d = N$.    
+\end{definition}
+
+\begin{remark}
+    It is easy to note that this definition is equivalent to $N_d \geq N \times \frac{1}{1+M}$, $N_p \geq 0$ and $N_p + N_d = N$.
+\end{remark}
+
+For some given $\rho_d$ and $\rho_p$, suppose there is an equilibrium with $N_d \geq 0$ drivers and $N_p \geq 0$ passengers. Clearly, since having more passengers than car capacity would lead to infinite cost for some passengers, it is clear that an equilibrium should lead to a feasible modal split.
+
+Since the cost function experienced by drivers is independent of the passengers, they spread across time according to the classic bottleneck model:
 
 \begin{equation}
 r_d(t) = \left\{
@@ -212,36 +225,131 @@ where
 
 They experience a cost of $\frac{\delta N_d}{s} + f + \Delta _d + \rho _d$ and their contribution to total social cost is $\frac{\delta N_d^2}{s} + N_d(E + f) + N_d \Delta _d$.
 
-As for passengers, since drivers already did the tradeoff between scheduling costs and congestion costs, they do not queue at the carpooling station. Therefore, as long as $N_p \leq M N_d$, any $r_p(t)$ that satisfies $r_p(t) \leq M r_d(t)$ for all $t$ and $\int_{\text{time}} r_p(t) dt = N_p$ is an equilibrium. The cost experienced by passengers is $\frac{\delta N_d}{s} + \Delta _p + \rho _p$.
+As for passengers, since drivers already did the tradeoff between scheduling costs and congestion costs, they do not queue at the carpooling station. Therefore, as long as $N_p \leq M N_d$, any $r_p(t)$ that satisfies $r_p(t) \leq M r_d(t)$ for all $t$ and $\int_{\text{time}} r_p(t) dt = N_p$ is an equilibrium. The cost experienced by a passenger is $\frac{\delta N_d}{s} + \Delta _p + \rho _p$.
 
-Then to satisfy the equilibrium condition, every passenger should have $c_p \leq c_d$ and every driver should have $c_d \leq c_p$, except if the car capacity is reached, in which case we suppose that the commuters with lower passenger inconvenience costs will be more enthusiastic to be passengers, and therefore be the actual passengers. Therefore, their contribution to social cost is $\frac{\delta N_p N_d}{s} +  N\int_{\Delta _p^{\text{min}}}^{F^{-1}(N_d / N)} \Delta _p F'(\Delta _p) d \Delta _p$.
+Then to satisfy the equilibrium condition, every passenger should have $c_p \leq c_d$ and every driver should have $c_d \leq c_p$, except if the car capacity is reached, in which case we suppose that the commuters with lower passenger inconvenience costs will be more enthusiastic to be passengers, and therefore be the actual passengers. Therefore, their contribution to social cost is $\frac{\delta N_p N_d}{s} +  N\int_{\Delta _p^{\text{min}}}^{F^{-1}(N_p / N)} \Delta _p F'(\Delta _p) d \Delta _p$.
 
 
 This leads to the following equilibrium conditions:
 \begin{itemize}
     \item $N_p = 0$ and $N_d = N$ if $\Delta _p^{\text{min}} > \Delta _d + f + \rho _d - \rho _p$;
-    \item $N_p = F(f + \Delta _d + \rho _d - \rho _p)$ if $\Delta _p^{\text{min}} \leq \Delta _d + f + \rho _d - \rho _p \leq \Delta _p^{\text{full}}$;
-    \item $N_p = N\times \frac{M}{1+M}$ and $N_d = N\times \frac{1}{1+M}$ if $\Delta _p^{\text{full}} < \Delta _d + f + \rho _d - \rho _p$.
+    \item $N_p = N\times \frac{M}{1+M}$ and $N_d = N\times \frac{1}{1+M}$ if $\Delta _p^{\text{full}} < \Delta _d + f + \rho _d - \rho _p$;
+    \item $N_p = F(f + \Delta _d + \rho _d - \rho _p)$ if $\Delta _p^{\text{min}} \leq \Delta _d + f + \rho _d - \rho _p \leq \Delta _p^{\text{full}}$.
 \end{itemize}
 where $\Delta _p^{\text{full}} = F^{-1}\left( \frac{M}{1+M} \right)$ is the threshold beyond which it is physically impossible to add make more drivers switch to passengers due to vehicle capacity limit.
 
-\begin{definition}[Feasible modal split]
-    A modal split $(N_d, N_p)$ is said to be feasible if $N_d \geq N \times \frac{1}{1+M}$, $N_p \geq 0$ and $N_p + N_d = N$.    
-\end{definition}
-
 \begin{prop}
-    For any given $\rho_d$ and $\rho_p$, there exists a unique feasible modal split $(N_d, N_p)$ which is an equilibrium.
+    \begin{itemize}
+        \item For any given $\rho_d$ and $\rho_p$, there exists a unique feasible modal split $(N_d, N_p)$ which is an equilibrium.
     
-    And for any feasible modal split $(N_d, N_p)$, there exists some (non-unique) $\rho _d$ and $\rho _p$ such that $(N_d, N_p)$ is the unique feasible modal split which is a resulting equilibrium.
+        \item And for any feasible modal split $(N_d, N_p)$, there exists some (non-unique) $\rho _d$ and $\rho _p$ such that $(N_d, N_p)$ is the unique feasible modal split which is a resulting equilibrium.
+    \end{itemize}
 \end{prop}
 
 \begin{proof}
     The first part of the proposition is already proven above.
 
-    % TODO
+    For the second part, it is straightforward to notice that:
+    \begin{itemize}
+        \item if $N_p = 0$ and $N_d = N$, then, then any $\rho _p$ and $\rho _d$ satisfying $\rho _p - \rho _d \geq f + \Delta _d - \Delta _p^{\text{min}}$ is solution;
+        \item if $N_p = N \times \frac{M}{M+ 1}$ and $N_d = N \times \frac{1}{M+ 1}$, then any $\rho _p$ and $\rho _d$ satisfying $\rho _p - \rho _d \leq f + \Delta _d - \Delta _p^{\text{full}}$ is solution;
+        \item if $0 < N_p < N \times \frac{M}{M+1}$, then defining $\Delta _p^{\text{switch}} = F^{-1}\left(\frac{N _p}{N} \right)$, any $\rho _p$ and $\rho _d$ satisfying $\rho _p - \rho _d = f + \Delta _d - \Delta _p^{\text{switch}}$ is solution.
+    \end{itemize}
     
 \end{proof} 
 
+\subsubsection{For $0 < \varphi < 1$}
+
+Now, the three modes are allowed, so we can rewrite the previous definition:
+
+\begin{definition}[Feasible modal split]
+    A modal split $(N_s, N_d, N_p)$ is said to be feasible if $0 \leq N_p \leq M \times N_d$, $N_s \geq 0$ and $N_p + N_d + N_s = N$.    
+\end{definition}
+
+Similarly to the case $\varphi = 1$, it is clear that for some given $\rho _p$ and $\rho _d$, if there is an equilibrium, then it should lead to a feasible modal split as newly defined. Solo-drivers and carpooling drivers would spread across time according to classical bottleneck time distribution, and passengers will never queue at the carpooling station while having no unique time-distribution.
+
+Then, the cost function for a commuter with a passenger inconvenience cost $\Delta _p$ is:
+
+\begin{equation}
+    \left\{
+    \begin{array}{l}
+        c_s(N_s) = \frac{\delta N_s}{(1-\varphi )s} + f\\
+        c_d(N_d) = \frac{\delta N_d}{\varphi s} + f + \Delta _d + \rho _d\\
+        c_p(N_d, \Delta _p) = \frac{\delta N_d}{\varphi s} + \Delta _p + \rho _p       
+    \end{array}
+    \right.
+\end{equation}
+
+The conditions for having an equilibrium are:
+\begin{itemize}
+    \item If everybody drives solo ($N_s = N$, $N_d = 0$ and $N_p = 0$):
+        \begin{equation}
+        \left\{
+        \begin{array}{l}
+            c_s(N) \leq c_d (0)
+        \end{array}
+        \right.
+        \end{equation}
+    
+    \item If everybody drives on the \acrshort{rl} ($N_s = 0$, $N_d = N$ and $N_p = 0$):
+        \begin{equation}
+        \left\{
+        \begin{array}{l}
+            c_s(0) \geq c_d (N)\\
+            c_d(N) \leq c_p(N, \Delta _p^{\text{min}})
+        \end{array}
+        \right.
+        \end{equation}
+
+    \item If everybody carpools and the car capacity is reached ($N_s = 0$, $N_d = N\times \frac{1}{M+1}$ and $N_p = N\times \frac{M}{M+1}$):
+        \begin{equation}
+        \left\{
+        \begin{array}{l}
+            c_s(0) \geq c_d (N\times \frac{1}{M+1})\\
+            c_d(N\times \frac{1}{M+1}) \leq c_p(N\times \frac{1}{M+1}, \Delta _p^{\text{full}})
+        \end{array}
+        \right.
+        \end{equation}
+
+        
+    \item If everybody carpools and the car capacity is not reached ($N_s = 0$, $N_d = N_d$ and $N_p = N - N_d$):
+        \begin{equation}
+        \left\{
+        \begin{array}{l}
+            c_s(0) \geq c_d (N_d)\\
+            c_d(N_d) = c_p\left(N_d, F^{-1} \left( \frac{N - N_d}{N} \right)\right)
+        \end{array}
+        \right.
+        \end{equation}
+
+    \item If some people drive solo and some share their seats, but without passengers ($N_s = N_s$, $N_d = N - N_s$ and $N_p = 0$):
+        \begin{equation}
+        \left\{
+        \begin{array}{l}
+            c_s(N_s) = c_d (N - N_s)\\
+            c_d(N - N_s) \leq c_p(N - N_s, \Delta _p^{\text{min}})
+        \end{array}
+        \right.
+        \end{equation}
+
+    \item If some people drive, some other carpool, and the car capacity is reached ($N_s = N_s$, $N_d = (N-N_s)\times \frac{1}{M+1}$, and $N_p = (N-N_s)\times \frac{M}{M+1}$):
+        \begin{equation}
+        \left\{
+        \begin{array}{l}
+            c_s(N_s) =  c_d \left( \frac{N-N_s}{M+1} \right)\\
+            c_d \left( \frac{N-N_s}{M+1} \right) \geq c_p \left( \frac{N-N_s}{M+1}, F^{-1} \left( \frac{N-N_s}{N}\times \frac{M}{M+1} \right) \right)
+        \end{array}
+        \right.
+        \end{equation}
+    \item If some people drive, some other carpool, and the car capacity is not reached ($N_s = N_s$, $N_d = N_d$, and $N_p = N - N_s - N_d$):
+        \begin{equation}
+        \left\{
+        \begin{array}{l}
+            c_s(N_s) = c_d ( N_d ) = c_p\left(N - N_s - N_p, F^{-1}\left( \frac{N - N_s - N_p}{N} \right) \right)
+        \end{array}
+        \right.
+        \end{equation}
+\end{itemize}
 
 
 \end{document}
