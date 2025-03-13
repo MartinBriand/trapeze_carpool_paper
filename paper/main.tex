@@ -88,9 +88,9 @@
 \section{Model}
 \subsection{Traffic technology}
 
-We consider a single highway linking a residential location and a \acrfull{cbd} where people work. Every day, some commuting inhabitants of the residential area go to the \acrshort{cbd}. The capacity of the highway is shared between a \acrfull{rl} and a \acrfull{gpl}. Also, at the beginning and at the end of the road, there are two carpooling stations. At the upstream station, carpooling passenger can safely get into the cars of drivers on the \acrshort{rl}. These same passengers will then safely alight at the downstream station. Travelers can choose between driving alone on the \acrshort{gpl} (their corresponding variables will be denoted by the subscript letter $s$ for ``solo''), drive on the \acrshort{rl} while being forced to take all passengers that would be waiting at the upstream station when they pass it, if any, up to the capacity of their vehicle (their corresponding variables will be denoted by the subscript letter $d$ for ``driver''), or to be a carpooling passenger, and wait at the carpooling station until some carpooling driver arrive at the station to pick them up (their corresponding variables will be denoted by the subscript letter $p$ for ``passenger'').
+We consider a single highway linking a residential location and a \acrfull{cbd} where people work. Every day, some commuting inhabitants of the residential area go to the \acrshort{cbd}. The capacity of the highway is shared between a \acrfull{rl} and a \acrfull{gpl}. Also, at the beginning and at the end of the road, there are two carpooling stations. At the upstream station, carpooling passenger can safely get into the car of drivers on the \acrshort{rl}. These same passengers will then safely alight at the downstream station. Travelers can choose between driving alone on the \acrshort{gpl} (their corresponding variables will be denoted by the subscript letter $s$ for ``solo''), drive on the \acrshort{rl} while being forced to take all passengers that would be waiting at the upstream station when they pass it, if any, up to the capacity of their vehicle (their corresponding variables will be denoted by the subscript letter $d$ for ``driver''), or to be a carpooling passenger and wait at the carpooling station until some carpooling driver arrive at the station to pick them up (their corresponding variables will be denoted by the subscript letter $p$ for ``passenger'').
 
-In a bottleneck fashion, the highway has a capacity $s$ (not to be mistaken with the subscript of solo-drivers). $\varphi$ denotes the share of the reserved capacity. \acrshort{rl} therefore have a capacity of $\varphi s$ and \acrshort{gpl} a capacity of $(1-\varphi)s$. Denoting $T_f$ the free-flow travel time (common on the two lanes), $T_s(t)$ and $T_d(t)$ the travel time of a driver departing at $t$ on the \acrshort{gpl} and the \acrshort{rl} respectively, we can define $T^{\nu}_s(t)$ and $T^{\nu}_d(t)$ the respective times lost in congestion as $T^{\nu}_i(t) = T_i(t) - T_f$ where $i$ is either $s$ or $d$. We suppose that the congestion occurs vertically right before the downstream station. Then, defining $r_s (t)$ and $r_d (t)$ as the respective incoming flows of solo-drivers and carpooling drivers at the beginning of the road (which is not disturbed by congestion thanks to the vertical queue hypothesis), and given any set of initial conditions $T^{\nu}_i(\bar{t}_i) \geq 0$, $T^{\nu}_i$ are uniquely defined by the differential equations:
+In a bottleneck fashion, the highway has a capacity $s$ (not to be mistaken with the subscript of solo-drivers). $\varphi$ denotes the share of the reserved capacity. \acrshort{rl} hence has a capacity of $\varphi s$ and \acrshort{gpl} a capacity of $(1-\varphi)s$. Denoting $T_f$ the free-flow travel time (common between the two lanes), $T_s(t)$ and $T_d(t)$ the travel time of a driver departing at $t$ on the \acrshort{gpl} and the \acrshort{rl} respectively, we can define $T^{\nu}_s(t)$ and $T^{\nu}_d(t)$ the respective times lost in congestion as $T^{\nu}_i(t) = T_i(t) - T_f$ where $i$ is either $s$ or $d$. We suppose that the congestion occurs vertically right before the downstream station. Then, defining $r_s (t)$ and $r_d (t)$ as the respective incoming flows of solo-drivers and carpooling drivers at the beginning of the road (which is not disturbed by congestion thanks to the vertical queue hypothesis), and given any set of initial conditions $T^{\nu}_i(\bar{t}_i) \geq 0$, $T^{\nu}_i$ are uniquely defined by the differential equations:
 
 \begin{equation}
     \frac{d T^{\nu}_i(t)}{dt} s_i = \left\{
@@ -102,7 +102,7 @@ In a bottleneck fashion, the highway has a capacity $s$ (not to be mistaken with
 \end{equation}
 where $s_d = \varphi s$ and $s_s = (1-\varphi)s$.
 
-As for the carpooling passengers at the upstream station, they can also queue at the station in a bottleneck fashion. Denoting $r_p(t)$ the arrival rate of passengers at the upstream station, and writing $M$ the capacity of passengers in vehicles excluding the driver (for example $M=3$), $q_p(t)$ the number of passengers waiting at the station at time $t$, and given an initial condition $q^{\nu}_p(\bar{t}_p) \geq 0$, $q^{\nu}_p$ is uniquely defined by the differential equation:
+As for the carpooling passengers at the upstream station, they can also queue at the station in a bottleneck fashion. Denoting $r_p(t)$ the arrival rate of passengers at the upstream station, and writing $M$ the capacity of passengers in vehicles excluding the driver (for example $M=3$ for a small car with 4 seats), $q^{\nu}_p(t)$ the number of passengers waiting at the station at time $t$, and given an initial condition $q^{\nu}_p(\bar{t}_p) \geq 0$, $q^{\nu}_p$ is uniquely defined by the differential equation:
 
 \begin{equation}
     \frac{d q^{\nu}_p(t)}{dt} = \left\{
@@ -119,25 +119,25 @@ Then, we can define $T^{\nu}_p(t)$ the time elapsed between an arrival at the st
     \item if $q_p(t) = 0$, then $T^{\nu}_p(t) = 0$
     \item else
     \begin{itemize}
-        \item if there is no $T^{\nu} \geq t$ such that M $\int_{t}^{T^{\nu}} r_d(t) dt \geq q_p(t)$, then $T^{\nu}_p(t) = +\infty$
+        \item if there is no $T^{\nu} \geq t$ such that $M \times \int_{t}^{T^{\nu}} r_d(t) dt \geq q_p(t)$, then $T^{\nu}_p(t) = +\infty$
         \item else, $T^{\nu}_p(t)$ is the smallest $T^{\nu} \geq t$ such that M $\int_{t}^{T^{\nu}} r_d(t) dt \geq q_p(t)$
     \end{itemize}
 \end{itemize}
 
-Finally, we define the travel time of a carpooling passenger as $T_p(t) = T^{\nu}_p(t) + T_d(t + T^{\nu}_p(t)) = T_p(t) = T^{\nu}_p(t) + T^{\nu}_d(t + T^{\nu}_p(t)) + T_f$.
+Finally, we define the travel time of a carpooling passenger arriving at the station at $t$ as the sum of the time spent waiting at the station and the travelling time, namely $T_p(t) = T^{\nu}_p(t) + T_d(t + T^{\nu}_p(t)) = T^{\nu}_p(t) + T^{\nu}_d(t + T^{\nu}_p(t)) + T_f$.
 
 
 \subsection{Population and costs}
 
-We suppose that we have a fixed demand of $N$ commuters. These commuters all wish to arrive at the same desired arrival time $t^*$. By choosing a mode $i\ in \left\{ s, d, p \right\}$ and a departure time $t$, they experience a travel time cost $\alpha \times T_i(t)$ where $\alpha$ is the shadow value of travel time. They also experience a delay cost $\max (\beta \times t^* - (t + T_i(t)), \gamma \times (t + T_i(t)) - t^*)$ where $\beta$ and $\gamma$ are the respective shadow values of time early and late. As usual in bottleneck formulations, we suppose $0 < \beta < \alpha$ and $0 < \gamma$. 
+We suppose that we have a fixed demand of $N$ commuters. These commuters all wish to arrive at the same desired arrival time $t^*$. By choosing a mode $i\ \in \left\{ s, d, p \right\}$ and a departure time $t$, they experience a travel time cost $\alpha \times T_i(t)$ where $\alpha$ is the shadow value of travel time. They also experience a delay cost $\max [\beta \times (t^* - (t + T_i(t))), \gamma \times ((t + T_i(t)) - t^*)]$ where $\beta$ and $\gamma$ are the respective shadow values of time early and late. As usual in bottleneck formulations, we suppose $0 < \beta < \alpha$ and $0 < \gamma$. 
 
-Every driver, either $s$ or $d$, also experience a cost $f$ for operating their car representing the cost of energy (hence the letter $f$ for ``fuel'') but also wear and tear costs, insurance cost, reparation costs… Externalities due to the car usage are represented by the cost $E$ (for externality). These are not experienced by drivers when choosing their mode, but will be included in social cost functions which will be defined below. 
+Every driver, either $s$ or $d$, also experiences a cost $f$ for operating their car representing the cost of energy (hence the letter $f$ for ``fuel'') but also wear and tear costs, insurance cost, reparation costs… All externalities but congestion due to car usage are represented by the cost $E$ (for ``externality''). These are not experienced by drivers when choosing their mode, but are included in social cost functions. 
 
 \comment{As said,}{This should be thoroughly explained in the introduction and justified by literature} % TODO
-the drivers of the reserved lanes are insensitive to the expected probability of having passengers. This hypothesis, which could be seen as rather strong (if there is no passenger, drivers would not be deterred from offering their seats, for they know that chances are low they actually do), is actually the result of focusing the complexity of the model on passengers. These are indeed expected to be the scarce resource of the system, and hence the most determining travelers for the system equilibria. \comment{Also, some intuitions which will be developed later in this section will contribute to further justify this hypothesis.}{Don’t forget to do it} % TODO
+the drivers of the reserved lanes are insensitive to the expected probability of having passengers. This hypothesis, which could be seen as rather strong (if there is no passenger, drivers would not be deterred from offering their seats for they know that chances are low they actually do share them), is actually the result of focusing the complexity of the model on passengers while keeping the model tractable. These are indeed expected to be the scarce resource of the system, and hence the most determining travelers for the system equilibria. \comment{Also, some intuitions which will be developed later in this section will contribute to further justify this hypothesis.}{Don’t forget to do it} % TODO
 This common cost is denoted $\Delta _d$.
 
-Similarly, carpooling passengers experience an inconvenience cost $\Delta _p$. However, opposite to carpooling driver inconvenience cost, this cost is distributed in the population according to the cumulative distribution function $F$. For example, there are $N \times F(\Delta _p ^0)$ commuters whose $\Delta _p$ value is lower than $\Delta _p ^0$. We also suppose that the values of $\Delta _p$ are bounded and that these bounds are reached. That is to say that there is at least one commuter whose passenger inconvenience cost is $\Delta _p ^{\text{min}}$ and $\Delta _p^{\text{min}} \leq \Delta _p$ for all other commuters. Similarly, there is at least one commuter whose passenger inconvenience cost is $\Delta _p ^{\text{max}}$ and $\Delta _p^{\text{max}} \geq \Delta _p$ for all other commuters. We also suppose that F is continuous, differentiable and strictly increasing. Said otherwise, the invert of F is well-defined and continuous on $[0, 1]$ and the density function is also well-defined, is the derivative of $F$. The density function is denoted $F'$.
+Similarly, carpooling passengers experience an inconvenience cost $\Delta _p$. However, opposite to carpooling driver inconvenience cost, this cost is distributed in the population according to the cumulative distribution function $F$. For example, there are $N \times F(\Delta _p ^0)$ commuters whose $\Delta _p$ value is lower than $\Delta _p ^0$. We also suppose that the values of $\Delta _p$ are bounded and that these bounds are reached. That is to say that there is at least one commuter whose passenger inconvenience cost is $\Delta _p ^{\text{min}}$ and $\Delta _p^{\text{min}} \leq \Delta _p$ for all other commuters. Similarly, there is at least one commuter whose passenger inconvenience cost is $\Delta _p ^{\text{max}}$ and $\Delta _p^{\text{max}} \geq \Delta _p$ for all other commuters. We also suppose that $F$ is continuous, differentiable and strictly increasing. Said otherwise, the invert of $F$ is well-defined, continuous on $[0, 1]$, and the density function which is the derivative of $F$, is also well-defined. The density function is denoted $F'$.
 
 Finally, carpooling drivers and passengers both have to pay a fare (potentially negative) for choosing their mode. This fare can be time-dependent. A carpooler choosing mode $i \in \left\{ p, d \right\}$ and departing at time $t$ would then experience a fare $\rho _i (t)$.
 
@@ -167,21 +167,21 @@ Her contribution to social cost will be:
 The organizer of the carpooling service will experience a profit (potentially negative) of:
 
 \begin{equation}
-    \int_{\text{time}} (r_p(t) * \rho _p(t) + r_d(t) * \rho _d(t)) dt
-\end{equation}.
+    \int_{\text{time}} (r_p(t) \rho _p(t) + r_d(t) \rho _d(t)) dt
+\end{equation}
 
-Without loss of generality, we can suppose $T_f = 0$ and that there is no queue before the first commuter, either on the road or at the upstream carpooling station.
+Without loss of generality, we can suppose $T_f = 0$ and that there is no queue before the first commuter arrives, either on the road or at the upstream carpooling station.
 
 
 \subsection{Equilibria for time-independent fares}
 
-Suppose we have an equilibrium between the three modes, we denote $N_s$, $N_d$ and $N_p$ the number of commuters choosing the solo-driver, carpooling driver and carpooling passenger modes respectively. These helping variables are subject to the following constraints: $N_s + N_d + N_p = N$, $0 \leq N_s = \int_{\text{time}} r_s(t) dt$, $0 \leq N_d = \int_{\text{time}} r_d(t) dt$ and $0 \leq N_p = \int_{\text{time}} r_p(t) dt$.
+Suppose we have an equilibrium between the three modes, we denote $N_s$, $N_d$ and $N_p$ the number of commuters choosing the solo-driver, carpooling driver and carpooling passenger modes respectively. These help variables are subject to the following constraints: $N_s + N_d + N_p = N$, $0 \leq N_s = \int_{\text{time}} r_s(t) dt$, $0 \leq N_d = \int_{\text{time}} r_d(t) dt$ and $0 \leq N_p = \int_{\text{time}} r_p(t) dt$.
 
-We also suppose that fares are time-independent. We hence rewrite $\rho _d(t)$ as $\rho _d$ and $\rho _p(t)$ as $\rho _p$.
+We also suppose that fares are time-independent. We hence rewrite $\rho _d(t)$ as $\rho _d$ and $\rho _p(t)$ as $\rho _p$. This assumption will be relaxed later.
 
 \subsubsection{For $\varphi = 0$}
 
-The problem is trivial since every one commutes as a solo driver and the problem reduces to a simple bottleneck problem.
+The problem is trivial since everyone commutes as a solo driver and the problem reduces to a simple bottleneck problem.
 
 We have $N_d = N_p = 0$ and $N_s = N$. Writing $\delta = \frac{\beta \gamma}{\beta + \gamma}$, the cost experienced by each commuter is $\frac{\delta N}{s} + f$ and the total social cost is $\frac{\delta N^2}{s} + N(E + f)$. The profit of the organizer is $0$.
 
@@ -199,7 +199,7 @@ We have $N_s = 0$ and everybody carpools.
 
 For some given $\rho_d$ and $\rho_p$, suppose there is an equilibrium with $N_d \geq 0$ drivers and $N_p \geq 0$ passengers. Clearly, since having more passengers than car capacity would lead to infinite cost for some passengers, it is clear that an equilibrium should lead to a feasible modal split.
 
-Since the cost function experienced by drivers is independent of the passengers, they spread across time according to the classic bottleneck model:
+Since the cost function experienced by drivers is independent of the behavior of passengers, they spread across time according to the classic bottleneck model:
 
 \begin{equation}
 r_d(t) = \left\{
@@ -216,16 +216,16 @@ where
 \begin{equation}
 \left\{
 \begin{array}{l}
-    t_d^0 = t^* - \frac{N}{s} \times \frac{\gamma}{\beta + \gamma}\\
-    \tilde{t}_d = t^* - \frac{N}{s} \times \frac{\beta \gamma}{\alpha(\beta + \gamma)}\\
-    t_d^1 = t^* + \frac{N}{s} \times \frac{\beta}{\beta + \gamma}
+    t_d^0 = t^* - \frac{N_d}{s} \times \frac{\gamma}{\beta + \gamma}\\
+    \tilde{t}_d = t^* - \frac{N_d}{s} \times \frac{\beta \gamma}{\alpha(\beta + \gamma)}\\
+    t_d^1 = t^* + \frac{N_d}{s} \times \frac{\beta}{\beta + \gamma}
 \end{array}
 \right.
 \end{equation}
 
 They experience a cost of $\frac{\delta N_d}{s} + f + \Delta _d + \rho _d$ and their contribution to total social cost is $\frac{\delta N_d^2}{s} + N_d(E + f) + N_d \Delta _d$.
 
-As for passengers, since drivers already did the tradeoff between scheduling costs and congestion costs, they do not queue at the carpooling station. Therefore, as long as $N_p \leq M N_d$, any $r_p(t)$ that satisfies $r_p(t) \leq M r_d(t)$ for all $t$ and $\int_{\text{time}} r_p(t) dt = N_p$ is an equilibrium. The cost experienced by a passenger is $\frac{\delta N_d}{s} + \Delta _p + \rho _p$.
+As for passengers, since drivers already did the tradeoff between scheduling costs and congestion costs, they do not queue at the carpooling station. Therefore, as long as $N_p \leq M N_d$, any $r_p(t)$ that satisfies $r_p(t) \leq M r_d(t)$ for all $t$ and $\int_{\text{time}} r_p(t) dt = N_p$ is an equilibrium. The cost experienced by a passenger with inconvenience cost $\Delta _p$ is $\frac{\delta N_d}{s} + \Delta _p + \rho _p$.
 
 Then to satisfy the equilibrium condition, every passenger should have $c_p \leq c_d$ and every driver should have $c_d \leq c_p$, except if the car capacity is reached, in which case we suppose that the commuters with lower passenger inconvenience costs will be more enthusiastic to be passengers, and therefore be the actual passengers. Therefore, their contribution to social cost is $\frac{\delta N_p N_d}{s} +  N\int_{\Delta _p^{\text{min}}}^{F^{-1}(N_p / N)} \Delta _p F'(\Delta _p) d \Delta _p$.
 
@@ -234,7 +234,7 @@ This leads to the following equilibrium conditions:
 \begin{itemize}
     \item $N_p = 0$ and $N_d = N$ if $\Delta _p^{\text{min}} > \Delta _d + f + \rho _d - \rho _p$;
     \item $N_p = N\times \frac{M}{1+M}$ and $N_d = N\times \frac{1}{1+M}$ if $\Delta _p^{\text{full}} < \Delta _d + f + \rho _d - \rho _p$;
-    \item $N_p = F(f + \Delta _d + \rho _d - \rho _p)$ if $\Delta _p^{\text{min}} \leq \Delta _d + f + \rho _d - \rho _p \leq \Delta _p^{\text{full}}$.
+    \item $N_p = N\times F(f + \Delta _d + \rho _d - \rho _p)$ if $\Delta _p^{\text{min}} \leq \Delta _d + f + \rho _d - \rho _p \leq \Delta _p^{\text{full}}$.
 \end{itemize}
 where $\Delta _p^{\text{full}} = F^{-1}\left( \frac{M}{1+M} \right)$ is the threshold beyond which it is physically impossible to add make more drivers switch to passengers due to vehicle capacity limit.
 
@@ -299,43 +299,43 @@ The conditions for having an equilibrium are:
         \end{equation}
 
         
-    \item If everybody carpools and the car capacity is not reached ($N_s = 0$, $N_d = N_d$ and $N_p = N - N_d$):
+    \item If everybody carpools and the car capacity is not reached ($N_s = 0$, $\frac{N}{M+1} < N_d < N$ and $N_p = N - N_d$):
         \begin{equation}
             c_s(0) \geq c_d (N_d) = c_p\left(N_d, F^{-1} \left( \frac{N - N_d}{N} \right)\right)
         \end{equation}
 
-    \item If some people drive solo and some share their seats, but without passengers ($N_s = N_s$, $N_d = N - N_s$ and $N_p = 0$):
+    \item If some people drive solo and some share their seats, but without passengers ($0 < N_s < N$, $N_d = N - N_s$ and $N_p = 0$):
         \begin{equation}
             c_s(N_s) = c_d (N - N_s) \leq c_p(N - N_s, \Delta _p^{\text{min}})
         \end{equation}
 
-    \item If some people drive, some other carpool, and the car capacity is reached ($N_s = N_s$, $N_d = (N-N_s)\times \frac{1}{M+1}$, and $N_p = (N-N_s)\times \frac{M}{M+1}$):
+    \item If some people drive, some other carpool, and the car capacity is reached ($0 < N_s < N$, $N_d = (N-N_s)\times \frac{1}{M+1}$, and $N_p = (N-N_s)\times \frac{M}{M+1}$):
         \begin{equation}
             c_s(N_s) =  c_d \left( \frac{N-N_s}{M+1} \right) \geq c_p \left( \frac{N-N_s}{M+1}, F^{-1} \left( \frac{N-N_s}{N}\times \frac{M}{M+1} \right) \right)
         \end{equation}
 
-    \item If some people drive, some other carpool, and the car capacity is not reached ($N_s = N_s$, $N_d = N_d$, and $N_p = N - N_s - N_d$):
+    \item If some people drive, some other carpool, and the car capacity is not reached ($0 < N_s < N$, $\frac{N - N_s}{M+1} < N_d < N - N_s$, and $N_p = N - N_s - N_d$):
         \begin{equation}
             \label{eq_equilibrium_cond_finish}
             c_s(N_s) = c_d ( N_d ) = c_p\left(N - N_s - N_p, F^{-1}\left( \frac{N - N_s - N_p}{N} \right) \right)
         \end{equation}
 \end{itemize}
 
-Equations \ref{eq_equilibrium_cond_start} --- \ref{eq_equilibrium_cond_finish} might seem complicated to analyze. The nice property below will however help in making further manipulations handy.
+Equations \ref{eq_equilibrium_cond_start} --- \ref{eq_equilibrium_cond_finish} might seem complicated to analyze. The nice proposition below will however help in making further manipulations handy.
 
 \begin{prop}
     \begin{itemize}
         \item For any given values of $\rho _p$ and $\rho _d$, there exists a unique feasible modal split that is an equilibrium;
-        \item For any given feasible modal split, there exists a (non-necessary unique) fare policy $(\rho _p, \rho _d)$ such that the given modal split is the unique feasible modal split that is an equilibrium resulting with that fare policy.
+        \item For any given feasible modal split, there exists a (non-necessary unique) fare policy $(\rho _p, \rho _d)$ such that the given modal split is the unique feasible modal split that is an equilibrium resulting from that fare policy.
     \end{itemize}
 \end{prop}
 
 \begin{proof}
-    The proof is structured as follows: for the first part of the property, we will first prove the uniqueness of the resulting feasible equilibrium (assuming existence) and then prove the existence; then will come the proof of the second part of the property.
+    The proof is structured as follows: for the first part of the proposition, we will first prove the uniqueness of the resulting feasible equilibrium (assuming existence) and then prove the existence; then will come the proof of the second part of the proposition.
 
     \item \paragraph{Proof that there is a unique feasible split for any fare policy}
     \item \subparagraph{Uniqueness}
-    We first notice that, if $(N_s, N_d, N_p)$ is an equilibrium, then given $N_d$, $N_p$ is uniquely defined and can be written as $N_p = N_p(N_d) = \min (M\times N_d, N \times F(f + \Delta _d + \rho _d - \rho _p))$\footnotemark. Since this function is increasing and continuous, the function $N_d \longrightarrow N_d + N_p(N_d)$ is continuous and strictly increasing. Therefore, if $N_s = 0$, there is at most one feasible modal split that is an equilibrium.
+    We first notice that, if $(N_s, N_d, N_p)$ is an equilibrium (regardless of feasibility), then given a value of $N_d$, $N_p$ is uniquely defined and can be written as $N_p = N_p(N_d) = \min (M\times N_d, N \times F(f + \Delta _d + \rho _d - \rho _p))$\footnotemark. Since this function is increasing and continuous, the function $N_d \longrightarrow N_d + N_p(N_d)$ is continuous and strictly increasing. Therefore, if $N_s = 0$, there is at most one feasible modal split that is an equilibrium.
     
     Similarly, if $0 < N_s < N$, then $N_d$ is also uniquely defined and can be written as $N_d = N_d (N_s) = \frac{\varphi}{1-\varphi}N_s - (\Delta _d - \rho _d)\frac{\varphi s}{\delta}$. Since these two functions are increasing and continuous, the function $N_s \longrightarrow N_s + N_d(N_s) + N_p(N_d(N_s))$ is strictly increasing and continuous. Therefore, there is at most one feasible modal split that is an equilibrium with $0 < N_s < N$.
 
@@ -378,10 +378,10 @@ Equations \ref{eq_equilibrium_cond_start} --- \ref{eq_equilibrium_cond_finish} m
     And then, we define this other function:
 
     \begin{equation}
-        c_p^{N_s, N_d}:= (N_s, N_d) \in \mathbb{R} _{+}^2 \longrightarrow \left[ N_p \in [0, M\times N_d] \longrightarrow c_p\left( N_d, F^{-1}\left(\frac{N_p}{N_s + N_d + N_p} \right) \right) \right]
+        c_p^{N_s, N_d}(N_s, N_d):= (N_s, N_d) \in \mathbb{R} _{+}^2 \longrightarrow \left[ N_p \in [0, M\times N_d] \longrightarrow c_p\left( N_d, F^{-1}\left(\frac{N_p}{N_s + N_d + N_p} \right) \right) \right]
     \end{equation}
 
-    We can see that for all $(N_s, N_d) \in \mathbb{R} _{+}^2$, $c_p^{N_s, N_d}$ is continuous strictly increasing in $N_p$, and therefore invertible. Using this fact, we construct two last intermediate functions:
+    We can see that for all $(N_s, N_d) \in \mathbb{R} _{+}^2$, $c_p^{N_s, N_d}(N_s, N_d)$ is continuous strictly increasing in $N_p$, and therefore invertible. Using this fact, we construct two last intermediate functions:
 
     \begin{equation}
         N_p(c):= c\in [c_{\text{min}}, +\infty[ \longrightarrow
@@ -398,12 +398,34 @@ Equations \ref{eq_equilibrium_cond_start} --- \ref{eq_equilibrium_cond_finish} m
         N(c):= c\in [c_{\text{min}}, +\infty[ \longrightarrow N_s(c) + N_d(c) + N_p(c)
     \end{equation}
 
-    Finally, we note that $N_s(c)$, $N_d(c)$ and $N_p(c)$ are three continuous functions, $N(c)$ is also continuous. Since $N(c_{\text{min}}) = 0$ and $\lim_{c\rightarrow +\infty} N(c) = +\infty$, there is at least one $c\in [c_{\text{min}}, +\infty[$ such that $N(c) = N$. By construct, the triplet $(N_s, N_d, N_p)$ thereby obtained is a feasible modal split satisfying one of the equilibrium conditions, which finishes the proof of the first part of the property.
+    Finally, we note that $N_s(c)$, $N_d(c)$ and $N_p(c)$ are three continuous functions, and thus is $N(c)$. Since $N(c_{\text{min}}) = 0$ and $\lim_{c\rightarrow +\infty} N(c) = +\infty$, there is at least one $c\in [c_{\text{min}}, +\infty[$ such that $N(c) = N$. By construct, the triplet $(N_s, N_d, N_p)$ thereby obtained is a feasible modal split satisfying one of the equilibrium conditions, which finishes the proof of the first part of the proposition.
 
 
     \item \paragraph{Proof that a feasible set always has a fare policy from which it could result as the unique equilibrium}
     
+    Let $(N_s, N_d, N_p)$ be a feasible modal split.
+
+    \begin{itemize}
+        \item If $N_s = 0$, then we set $\rho _d \leq -\frac{\delta N_d}{\varphi s} - \Delta _d$. As for $\rho _p$:
+        \begin{itemize}
+            \item If $N_d = N$, then we set $\rho _p \geq f + \rho _d + \Delta _d - \Delta _p^{\text{min}}$.
+            \item If $N_d = \frac{N}{M+1}$, then we set $\rho _p \leq f + \rho _d + \Delta _d - \Delta _p^{\text{full}}$.
+            \item Else, $\frac{N}{M+1} < N_d < N$, and we set $\rho _p = f + \rho _d + \Delta _d - F^{-1}\left(\frac{N _p}{N} \right)$.
+        \end{itemize}
+        \item If, $N_s = N$, then we set $\rho _d \geq \frac{\delta N}{(1-\varphi)s} - \Delta _p$ and $\rho _p$ arbitrarily.
+        \item Else, $0 < N_s < N$, and we set $\rho _d = \frac{\delta N_s}{(1-\varphi)s} - \frac{\delta N_d}{\varphi s} - \Delta _d$. As for $\rho _p$:
+        \begin{itemize}
+            \item If $N_d = N - N_s$, then we set $\rho _p \geq f + \rho_d + \Delta _d - \Delta _p ^{\text{min}}$.
+            \item If $N_d = \frac{N - N_s}{M+1}$, then we set $\rho _p \leq f + \rho _d + \Delta _d - F^{-1}\left( \frac{N - N_s}{N} \times \frac{M}{M+1} \right)$.
+            \item Else, $\frac{N - N_s}{M+1} < N_d < N - N_s$, and we set $\rho _p = f + \rho _d + \Delta _d - F^{-1}\left(\frac{N _p}{N} \right)$. This is the only case where the fare policy is uniquely defined.
+        \end{itemize}
+    \end{itemize}
+
+    It is clear that the feasible modal split is an equilibrium with the fare policy defined above (and is also the unique equilibrium that could result due to the first part of the proposition).
+    
 
 \end{proof}
+
+This proposition is of great help for the remaining of the paper. We want indeed to compute the most desirable feasible modal splits. The fact that these modal splits will always be deterministically achievable by setting an appropriate fare policy (which has no impact on social cost functions) makes the problem much simpler.
 
 \end{document}
