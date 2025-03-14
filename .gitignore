@@ -18,3 +18,4 @@ ltex*
 
 # Python results
 /drafts/notebooks/results/
+.ipynb_checkpoints/
