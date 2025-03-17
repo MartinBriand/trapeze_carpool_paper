@@ -119,8 +119,8 @@ Then, we can define $T^{\nu}_p(t)$ the time elapsed between an arrival at the st
     \item if $q_p(t) = 0$, then $T^{\nu}_p(t) = 0$
     \item else
     \begin{itemize}
-        \item if there is no $T^{\nu} \geq t$ such that $M \times \int_{t}^{T^{\nu}} r_d(t) dt \geq q_p(t)$, then $T^{\nu}_p(t) = +\infty$
-        \item else, $T^{\nu}_p(t)$ is the smallest $T^{\nu} \geq t$ such that M $\int_{t}^{T^{\nu}} r_d(t) dt \geq q_p(t)$
+        \item if there is no $T_p^{\nu} \geq 0$ such that $M \times \int_{t}^{t+T_p^{\nu}} r_d(t) dt \geq q_p(t)$, then $T^{\nu}_p(t) = +\infty$
+        \item else, $T^{\nu}_p(t)$ is the smallest $T_p^{\nu} \geq 0$ such that $M \times \int_{t}^{t + T_p^{\nu}} r_d(t) dt \geq q_p(t)$
     \end{itemize}
 \end{itemize}
 
@@ -142,6 +142,12 @@ Similarly, carpooling passengers experience an inconvenience cost $\Delta _p$. H
 Finally, carpooling drivers and passengers both have to pay a fare (potentially negative) for choosing their mode. This fare can be time-dependent. A carpooler choosing mode $i \in \left\{ p, d \right\}$ and departing at time $t$ would then experience a fare $\rho _i (t)$.
 
 To summarize, a commuter with a given $\Delta _p$ value will experience the following costs depending on the mode she chooses:
+
+% todo ecrire sous la forme d’un schedueling cost
+% todo écrire \delta _p de manière plus intuitive.
+% ajouter un graph d’équilibre des coûts.
+
+% regrouper les propositition --> pour toute tarification, il existe un équilibre unique. puis proposition 2 l’inverse.
 
 \begin{equation}
 \left\{
