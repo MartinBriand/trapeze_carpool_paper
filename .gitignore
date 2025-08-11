@@ -19,4 +19,5 @@ ltex*
 # Python results
 /drafts/notebooks/results/
 /notebooks/outputs/
+/outputs/
 .ipynb_checkpoints/
