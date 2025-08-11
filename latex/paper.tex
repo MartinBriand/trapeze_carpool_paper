@@ -644,7 +644,6 @@ This time, we are trying to optimize
 \label{equation:SC_interior_3vars}
     SC_{0 <\varphi<1} = \frac{\delta N_s^2}{(1 - \varphi ) s} + \frac{\delta N_d^2}{\varphi s} + \frac{\delta N_d N_p}{\varphi s} + (N_s + N_d)(f + E) + N_d\overline{\Delta_d} + \int_{\Delta_p^{\text{min}}} ^{F^{-1}\left( \frac{N_p}{N} \right)} \Delta_pdF
 \end{equation}
-
 under the usual constraints.
 
 Noticing that $N_s = N - N_d - N_p$ and plugging this, we get:
@@ -779,11 +778,22 @@ In that case, we also have the following property (to check numerically):
 
 The consequences of Proposition \ref{proposition:lim_per_person_profit_N_big_phi_fixed} is intuitive: 
 \begin{enumerate}
-    \item the more reluctant commuters are toward carpooling (high values of $\overline{\Delta_d}$ and $F^{-1}$), the more carpooling needs to be subsided; \item the higher the other externalities $E$, the more carpooling needs to be subsided (under untolled alternative and inelastic demand):
+    \item the more reluctant commuters are toward carpooling (high values of $\overline{\Delta_d}$ and $F^{-1}$), the more carpooling needs to be subsided;
+    \item the higher the other externalities $E$, the more carpooling needs to be subsided (under untolled alternative and inelastic demand);
     \item and the higher the car operation price, the more carpooling occurs naturally, and the more profit can be made by the TRAPEZE system.
 \end{enumerate}
 
-\subsubsection{More expensive car operations leads to more natural carpooling and less subsidy}
+What is less intuitive however is that the \acrshort{vot} to capacity ratio ($\frac{\delta}{s}$) is unrelated to these trends.
+
+\subsubsection{Non-extreme demand}
+
+Doing some comparative statics, it is possible to find some more intuitive properties:
+
+\begin{proposition}
+    \label{proposition:intuitive_comparative_statics}
+    Doing …
+\end{proposition}
+
 \subsubsection{More expensive environmental costs leads to more carpooling without natural incentive, and thus to more subsidy}
 \subsubsection{Forcing the system to break-even}
 \subsubsection{impact of vot}
