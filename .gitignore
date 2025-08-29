@@ -1,18 +1,18 @@
 # Latex
-/latex/*.aux
-/latex/*.fdb_latexmk
-/latex/*.fls
-/latex/*.log
-/latex/*.out
-/latex/*.pdf
-/latex/*.synctex.gz
-/latex/*.toc
-/latex/*.snm
-/latex/*.nav
-/latex/*.blg
-/latex/*.bbl
-/latex/*.run.xml
-/latex/*.bcf
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+*.snm
+*.nav
+*.blg
+*.bbl
+*.run.xml
+*.bcf
 
 # VS code
 trapeze_carpool_paper.code-workspace
