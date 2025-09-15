@@ -14,9 +14,10 @@
 *.run.xml
 *.bcf
 
-# VS code
+# Code
 trapeze_carpool_paper.code-workspace
 ltex*
+.venv
 
 # Python results
 /drafts/notebooks/results/
